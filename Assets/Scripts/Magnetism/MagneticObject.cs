@@ -12,6 +12,9 @@ public class MagneticObject : MonoBehaviour
     private Material negativeMaterial;
     private Renderer objRenderer;
 
+    private static readonly int OutlineIntensity = Shader.PropertyToID("_OutlineIntensity");
+    private MaterialPropertyBlock propertyBlock;
+
 
     public MagneticPolarity Polarity => polarity;
 
@@ -19,7 +22,10 @@ public class MagneticObject : MonoBehaviour
     void Awake()
     {
         objRenderer = GetComponent<Renderer>();
+        propertyBlock = new MaterialPropertyBlock();
     }
+
+
 
     void OnValidate()
     {
@@ -32,4 +38,12 @@ public class MagneticObject : MonoBehaviour
         objRenderer.sharedMaterial = polarity == MagneticPolarity.Positive ? positiveMaterial : negativeMaterial;
     }
 
+
+    public void SetOutline(bool enabled)
+    {
+        objRenderer.GetPropertyBlock(propertyBlock);
+
+        propertyBlock.SetFloat(OutlineIntensity, enabled ? 50f : 0f);
+        objRenderer.SetPropertyBlock(propertyBlock);
+    }
 }

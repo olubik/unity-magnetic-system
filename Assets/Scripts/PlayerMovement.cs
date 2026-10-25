@@ -22,18 +22,32 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 moveDir = new Vector3(playerInput.MoveInput.x, 0, playerInput.MoveInput.y).normalized;
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraRight = Camera.main.transform.right;
 
-        if(controller.isGrounded && verticalVel < 0f)
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        Vector3 moveDir = (cameraRight * playerInput.MoveInput.x + cameraForward * playerInput.MoveInput.y).normalized;
+
+        if (moveDir.sqrMagnitude > 0.001f)
+        {
+            transform.rotation = Quaternion.LookRotation(moveDir);
+        }
+
+        if (controller.isGrounded && verticalVel < 0f)
         {
             verticalVel = -2f;
         }
-        
+
         if (controller.isGrounded && playerInput.IsJumpPressed)
         {
             verticalVel = jumpForce;
         }
-        
+
         verticalVel += gravity * Time.deltaTime;
 
         moveDir *= speed;
