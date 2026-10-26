@@ -103,7 +103,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMagnet
   cam: {fileID: 0}
   magnetRadius: 2
-  magnetDistance: 30
+  magnetDistance: 15
+  maxMagneticForce: 30
+  minMagneticForce: 15
   magneticLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -17,6 +17,10 @@ public class PlayerMagnet : MonoBehaviour
     [SerializeField]
     private float magnetDistance = 30f;
     [SerializeField]
+    private float maxMagneticForce = 40f;
+    [SerializeField]
+    private float minMagneticForce = 2f;
+    [SerializeField]
     private LayerMask magneticLayer;
 
 
@@ -87,7 +91,12 @@ public class PlayerMagnet : MonoBehaviour
             {
                 forceDir = -forceDir;
             }
-            rb.AddForce(forceDir * 20f, ForceMode.Force);
+
+            float distance = Vector3.Distance(transform.position, rb.position);
+            float distanceFactor = Mathf.Clamp01(distance / magnetDistance);
+
+            float force = Mathf.Lerp(maxMagneticForce, minMagneticForce, distanceFactor);
+            rb.AddForce(forceDir * force, ForceMode.Force);
         }
         UpdateTargetOutlines(newTargets);
 

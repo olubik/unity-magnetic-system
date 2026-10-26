@@ -7,9 +7,12 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField]
     private PlayerInputReader playerInput;
-    [SerializeField] private Transform target;
-    [SerializeField] private float sensitivity = 40f;
+    [SerializeField]
+    private Transform target;
+    [SerializeField]
+    private float sensitivity = 40f;
     private float distance = 5f;
+    [SerializeField]
     private float minPitch = -10f;
     private float maxPitch = 85f;
     private float shoulderOffset = 1.5f;

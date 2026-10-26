@@ -25,9 +25,20 @@ public class MagneticObject : MonoBehaviour
         propertyBlock = new MaterialPropertyBlock();
     }
 
+    public void SetPolarity(MagneticPolarity newPolarity)
+    {
+        polarity = newPolarity;
+        UpdateMaterial();
+    }
+
 
 
     void OnValidate()
+    {
+        UpdateMaterial();
+    }
+
+    private void UpdateMaterial()
     {
         if (objRenderer == null)
         {
@@ -37,6 +48,7 @@ public class MagneticObject : MonoBehaviour
 
         objRenderer.sharedMaterial = polarity == MagneticPolarity.Positive ? positiveMaterial : negativeMaterial;
     }
+
 
 
     public void SetOutline(bool enabled)
