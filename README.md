@@ -7,11 +7,9 @@ The player controls a magnet that can switch between positive and negative polar
 ## Gameplay Preview
 
 ![Magnetic interactions](gifs/magnetic-interactions.gif)
-
 *Attracting and repelling multiple objects.*
 
 ![Polarity switching](gifs/polarity-switching.gif)
-
 *Optionally, a magnetic object can periodically switch between polarities.*
 
 ## Editor Workflow
@@ -19,7 +17,6 @@ The player controls a magnet that can switch between positive and negative polar
 Magnetic objects can have their polarity configured directly in the Unity inspector. Changing an object's polarity automatically updates its material, making magnetic objects easy to configure and reuse.
 
 ![Editor workflow](gifs/editor-workflow.gif)
-
 *Changing an object's polarity in the inspector automatically updates its appearance*
 
 ## Features
