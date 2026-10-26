@@ -16,11 +16,11 @@ The player controls a magnet that can switch between positive and negative polar
 
 ## Editor Workflow
 
-Magnetic objects can have their polarity configured directly in the Unity inspector. Changing an object's polarity automatically updates its material, making magnetic objetcs easy to configure an reuse.
+Magnetic objects can have their polarity configured directly in the Unity inspector. Changing an object's polarity automatically updates its material, making magnetic objects easy to configure and reuse.
 
 ![Editor workflow](gifs/editor-workflow.gif)
 
-*Changing an object's polarity in the inspector automatically updates its apprearance*
+*Changing an object's polarity in the inspector automatically updates its appearance*
 
 ## Features
 
@@ -48,7 +48,7 @@ The system separates input handling, player movement, magnetic interactions, and
 | `PlayerMovement` | Handles player movement. |
 | `PlayerMagnet` | Manages magnetic interactions, detects magnetic objects and applies forces. |
 | `MagneticObject` | Stores an object's polarity and manages its own visual feedback. |
-| `PlayerPolarityVisual` | Updates the player's visual based on his active polarity. |
+| `PlayerPolarityVisual` | Updates the player's appearance based on the active polarity. |
 | `MagneticPolaritySwitcher` | Periodically switches an object's polarity. |
 
 ## Implementation Details
