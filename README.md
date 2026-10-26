@@ -4,6 +4,7 @@ A polarity-based magnetic interaction system developed in Unity using C# and Sha
 
 The player can switch between positive and negative polarity, attracting and repelling magnetic objects.
 
+
 ## Gameplay Preview
 
 ![Magnetic interactions](gifs/magnetic-interactions.gif)
@@ -11,6 +12,7 @@ The player can switch between positive and negative polarity, attracting and rep
 
 ![Polarity switching](gifs/polarity-switching.gif)
 *Optionally, a magnetic object can periodically switch between polarities.*
+
 
 ## Features
 
@@ -20,6 +22,7 @@ The player can switch between positive and negative polarity, attracting and rep
 - **Automatic polarity switching:** Magnetic objects can automatically switch polarity at configurable intervals.
 - **Shader-based visual feedback:** Use color and shader effects to indicate the player's active polarity and highlight affected objects.
 
+
 ## Controls
 
 | Input | Action |
@@ -28,12 +31,14 @@ The player can switch between positive and negative polarity, attracting and rep
 | Right mouse button (hold) | Activate negative polarity |
 | Escape | Unlock cursor |
 
+
 ## Editor Workflow
 
 Magnetic objects can have their polarity configured directly in the Unity inspector. Changing an object's polarity automatically updates its material, making magnetic objects easy to configure and reuse.
 
 ![Editor workflow](gifs/editor-workflow.gif)
 *Changing an object's polarity in the inspector automatically updates its appearance*
+
 
 ## How It Works
 
@@ -56,6 +61,7 @@ Shader effects communicate magnetic interactions to the player. Affected objects
 
 Magnetic objects can be configured to automatically alternate between positive and negative polarities at configurable time intervals. This introduces an additional gameplay challenge by changing the interaction between the player and the object over time.
 
+
 ## Technical Overview
 
 The system separates input handling, player movement, magnetic interactions, and visual feedback into dedicated components.
@@ -68,6 +74,7 @@ The system separates input handling, player movement, magnetic interactions, and
 | `MagneticObject` | Stores an object's polarity and manages its own visual feedback. |
 | `PlayerPolarityVisual` | Updates the player's appearance based on the active polarity. |
 | `MagneticPolaritySwitcher` | Periodically switches an object's polarity. |
+
 
 ## Built With
 
