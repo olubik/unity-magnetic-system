@@ -1,8 +1,8 @@
-# Magnetic System — Unity
+# Unity - Magnetic System
 
 A polarity-based magnetic interaction system developed in Unity using C# and Shader Graph.
 
-The player controls a magnet that can switch between positive and negative polarity, attracting and repelling multiple magnetic objects simultaneously.
+The player can switch between positive and negative polarity, attracting and repelling magnetic objects.
 
 ## Gameplay Preview
 
@@ -12,17 +12,10 @@ The player controls a magnet that can switch between positive and negative polar
 ![Polarity switching](gifs/polarity-switching.gif)
 *Optionally, a magnetic object can periodically switch between polarities.*
 
-## Editor Workflow
-
-Magnetic objects can have their polarity configured directly in the Unity inspector. Changing an object's polarity automatically updates its material, making magnetic objects easy to configure and reuse.
-
-![Editor workflow](gifs/editor-workflow.gif)
-*Changing an object's polarity in the inspector automatically updates its appearance*
-
 ## Features
 
-- **Polarity-based interactions:** Attract or repel magnetic objects depending on the player's active polarity.
-- **Multiple-object detection:** Detect and interact with multiple magnetic objects simultaneously.
+- **Polarity based interactions:** Attract or repel magnetic objects depending on the player's active polarity.
+- **Multiple object detection:** Detect and interact with multiple magnetic objects simultaneously.
 - **Distance-based force:** Magnetic force varies with the distance between the player and each target.
 - **Automatic polarity switching:** Magnetic objects can automatically switch polarity at configurable intervals.
 - **Shader-based visual feedback:** Use color and shader effects to indicate the player's active polarity and highlight affected objects.
@@ -34,6 +27,34 @@ Magnetic objects can have their polarity configured directly in the Unity inspec
 | Left mouse button (hold) | Activate positive polarity |
 | Right mouse button (hold) | Activate negative polarity |
 | Escape | Unlock cursor |
+
+## Editor Workflow
+
+Magnetic objects can have their polarity configured directly in the Unity inspector. Changing an object's polarity automatically updates its material, making magnetic objects easy to configure and reuse.
+
+![Editor workflow](gifs/editor-workflow.gif)
+*Changing an object's polarity in the inspector automatically updates its appearance*
+
+## How It Works
+
+### Magnetic interactions
+
+The player detects magnetic objects within the aiming area using `Physics.SphereCastAll`. Detected objects are filtered to identify valid magnetic targets.
+
+The force direction depends on the relationship between the player's active polarity and the target object's polarity:
+
+- **Opposite polarities:** Attraction.
+- **Same polarities:** Repulsion.
+
+Magnetic force varies with the distance between the player and each target, providing more control over nearby objects.
+
+### Visual feedback
+
+Shader effects communicate magnetic interactions to the player. Affected objects receive a visual highlight, while the player's color indicates the currently active polarity.
+
+### Automatic polarity switching
+
+Magnetic objects can be configured to automatically alternate between positive and negative polarities at configurable time intervals. This introduces an additional gameplay challenge by changing the interaction between the player and the object over time.
 
 ## Technical Overview
 
@@ -48,29 +69,8 @@ The system separates input handling, player movement, magnetic interactions, and
 | `PlayerPolarityVisual` | Updates the player's appearance based on the active polarity. |
 | `MagneticPolaritySwitcher` | Periodically switches an object's polarity. |
 
-## Implementation Details
-
-### Magnetic interactions
-
-The player detects magnetic objects within the aiming area using `Physics.SphereCastAll`. Detected objects are filtered to identify valid magnetic targets.
-
-The force direction depends on the relationship between the player's active polarity and the target object's polarity:
-
-- **Opposite polarities:** Attraction.
-- **Matching polarities:** Repulsion.
-
-Magnetic force varies with the distance between the player and each target, providing more control over nearby objects.
-
-### Visual feedback
-
-Shader effects communicate magnetic interactions to the player. Affected objects receive a visual highlight, while the player's color indicates the currently active polarity.
-
-### Automatic polarity switching
-
-Magnetic objects can be configured to automatically alternate between positive and negative polarities at configurable time intervals. This introduces an additional gameplay challenge by changing the interaction between the player and the object over time.
-
 ## Built With
 
 - **Engine:** Unity 6 LTS (6000.3.27f1)
 - **Language:** C#
-- **Visual Effects:** Shader Graph
+- **Effects:** Shader Graph
